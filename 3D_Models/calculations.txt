@@ -1,0 +1,250 @@
+http://www.avislab.com/blog/stm32-pmsm_ru/
+
+http://lambertus.info/?motor-tools,4
+http://www.bavaria-direct.co.za/constants/#prettyPhoto
+
+https://en.wikipedia.org/wiki/Motor_constants
+http://de.mathworks.com/help/physmod/elec/ref/dcmotor.html
+https://www.rcgroups.com/forums/showthread.php?1877211-The-relationship-between-Kv-Resistance-RPM-and-torque-in-BLDC-motors-explained!
+- The current required to resist a given torque: Conveniently, thanks to
+  the magic of conservation of energy, this is given by the inverse of Kv.
+  You have to use SI units for that though. That means your Kv has to be
+  expressed in radians per second, then when you invert it, your torque
+  constant units are in units of newton-meters per amp.
+
+  Say Kv = 150
+                  1
+	  Kt =  ------------- = 0.064
+	        Kv / 60 * 2pi
+
+
+http://simplemotor.com/calculations/
+http://www.micromo.com/technical-library/dc-motor-tutorials/motor-calculations
+http://www.asawicki.info/Mirror/Car%20Physics%20for%20Games/Car%20Physics%20for%20Games.html
+
+https://endless-sphere.com/forums/viewtopic.php?f=30&t=45489
+http://vedder.se/2014/10/chosing-the-right-bldc-motor-and-battery-setup-for-an-electric-skateboard/
+
+Turnigy Aerodrive SK3 - 6374-149kv Brushless Outrunner Motor
+voltage = 12S, 45v
+max power = 2250w
+RPM/V = 149kv
+angular speed = kv x V / 60 x 2pi = 702 rad/s
+Max torque = Power / AngularSpeed = 2250 / 702 = 3.2Nm
+
+
+wheel radius        = 0.2m
+wheel circumference = 1.29m
+
+speed 20km/h = 555cm/s
+
+required wheel RPM = 555/129 x 60 = ~258
+ratio 1:6
+motor RPM  = 258 x 6 = 1548
+
+ERPM = pole pairs * RPM
+(Maytech motor MTO6365-170-HA-C has 7 pole pairs)
+motor ERPM = 1548 * 7 = 10836
+
+
+weight = 30kg
+
+http://www.school-for-champions.com/science/friction_rolling_coefficient.htm#.WSg5F_FNwnU
+http://hpwizard.com/tire-friction-coefficient.html:
+
+bicycle dry asphalt:
+ Friction Coefficient: 0.75
+ Rolling Resistance Coefficient: 0.004
+
+Static F friction = N x u = m x g x u = 30 x 9.8 x 0.75 = 220.5N
+Static Torque = Ff x r = 220.5 x 0.20 = 44.1Nm
+
+Rolling F friction = N x u = m x g x u = 30 x 9.8 x 0.005 = 1.2N
+Rolling Torque = Ff x r = 1.2 x 0.20 = 0.23Nm
+
+https://www.youtube.com/watch?v=9rIIJbDkpN8
+
+Turnigy Aerodrive SK3 - 6374-149kv Brushless Outrunner Motor
+
+Gear ratio = 0.1094
+Motor kv = 149kv
+Battery voltage = 22.2v
+Wheel circumference = 2.17m,
+
+Theoretical speed of 28.36mp/h (12.67m/s)
+
+Theoretical wheel RPM 12.67/2.17*60 = 350.322
+
+
+////// Timing Belts and Pulleys
+
+Timing belts length
+http://blog.misumiusa.com/sizing-timing-belts-and-pulleys/
+
+
+////// Where to buy VESC and Motors + motors specs
+
+For e-boards:
+http://www.michobby.com
+https://www.unikboards.com/fr/categorie-produit/diy-parts/electronic/
+http://shop.faradaymotion.com/shop/18-electronics/4-vesc-motor-controller/
+https://www.scramboards.com/vesc-vedder.html
+http://www.esk8.de/
+
+Industrial belts, pulleys, ball bearings
+http://sdp-si.com
+
+
+///// PCB services
+https://oshpark.com/
+https://pcbs.io
+
+
+Befestigung - закрепление, прикрепление
+Klemmschraube
+
+Zahnriemenscheiben Zylindrische Bohrung mit Innengewinde
+Zahnriemenscheiben Nut + Gewindebohrung
+
+///// CALCULATIONS
+
+Required start torque = 7.35 Nm
+
+                    170 x 2pi
+Kv = 170 RPM/V =  ----------- = 17.793 rad/s/V
+                       60
+
+       1
+Kt =  --- = 0.0562 Nm/A
+       Kv
+
+R = 0.0402 Ohm
+
+
+T = Kt x I
+
+Vb-emf = Kvv x W
+
+        1
+Kvv = ------ = Kt
+        Kv
+
+      T      7.35Nm
+I =  ---  = ----------- = 130.78 A
+	  Kt     0.0562Nm/A
+
+      Vs - Vb-emf     Vs - (Kvv x W)
+I =  ----------- = ----------------
+          R              R
+
+T/Kt = (Vs - Kvv x W)/R
+
+T/Kt x R = Vs - Kvv x W
+
+Kvv x W = Vs - T/Kt x R
+
+W = (Vs - T/Kt x R) / Kvv =
+  = (22V - 7.35Nm / 0.0562NmA x 0.0402Ohm) / (1/17.793rad/s/V) =
+  = 297.90 rad/s = 2844 RPM
+
+2844 RPM = 47 RPS
+
+Wheel speed on 7.35Nm load and 22V source =
+  47RPS x 1/6ratio x 1.29m x 60s x 60m / 1000m = 36 km/h
+
+
+
+///// 3D PRINTED
+
+Rear pulley: HTD 5M 84T, radius 70mm
+Ratio: 1:6
+
+Timing belt length:
+
+               pi(D1 + D2)   (D1 - D2)^2
+Length = 2C + ------------ + -----------
+                    2            4C
+
+ C = Center to center distance between shafts
+D1 = Pitch diameter of larger pulley
+D2 = Pitch diameter of smaller pulley
+
+ C = 0.25M
+D1 = 0.14M
+D2 = 0.023M
+
+Length = 2x0.25 + pi(0.14 + 0.023)/2 + ((0.14 - 0.023)^2)/4x0.25 = 0.77M
+
+
+///// ORDERS
+
+Motor  MTO6365-170-HA-C
+http://www.maytech.cn/en/mto6355-250-ha/10337.html
+
+Model NO.:           MTO6365-170-HA-C
+Motor KV:            170(RPM/V)
+Shaft:               8mm
+Motor Size:          63.0×64.0
+Max. Current:        65A
+Input Volt.:         2s-12S Lipo cell
+NET Weight:          668g
+Max. Output Watt:    3520W
+Internal Resistance: 0.0402 Ohm
+Pole pairs:          7 (empirically calculated, btw usual value)
+
+
+                    170 x 2pi
+Kv = 170 RPM/V =  ----------- = 17.793 rad/s
+                       60
+
+       1
+Kt =  --- = 0.0562 Nm/A
+       Kv
+
+
+
+
+
+
+Pulley 15-5M-15 8mm bore
+https://ru.aliexpress.com/item/POWGE-15-Teeth-5M-Timing-Pulley-Bore-5-6-6-35-8-10-12mm-Fit-Width/32789771652.html?spm=2114.13010608.0.0.9FCkCO
+
+  19mm
+  <--->
+  |   | ^
+  |   | |
+  |   | | diameter 22.73mm
+  |   | |
+  |   | v
+
+
+Ball bearings
+https://ru.aliexpress.com/item/Large-discounts-2PCS-bearing-steel-material-608ILQ-9-bearing-professional-skateboard-bearings-skate-shoes-bearings/32790879486.html?spm=2114.13010608.0.0.pBcErB
+
+       7mm
+      <--->
+      |   | ^
+      |___| |
+  8mm  ___  | diameter 22mm
+      |   | |
+      |   | v
+
+
+
+8mm inside
+22mm outside
+
+
+Pulley without teeth, Bore 8mm, Belt width 10
+http://www.ebay.com/itm/162304304189?_trksid=p2057872.m2749.l2649&var=461305779586&ssPageName=STRK%3AMEBIDX%3AIT
+
+
+Pulley with 15 teeth, HTD 5M, Bore 8mm, Belt width 10
+https://www.aliexpress.com/item/HTD-5M-pulley-timing-pulley-5M15T-Timing-Belt-Synchronous-wheel-Pulley-fit-belt-width-10mm/32680997562.html?spm=2114.13010608.0.0.vQNLuE
+
+
+
+///////////////
+
+
+radi

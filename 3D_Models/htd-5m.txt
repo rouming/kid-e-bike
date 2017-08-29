@@ -1,0 +1,71 @@
+измерение HTD Шкив Типа (мм)
+Type	  PB	HT		R		S		r		угол
+3М		  3		1.28	0.91	1.90	0.3		и асимп; 14 °
+5М		  5		2.16	1.56	3.25	0.48	и асимп; 14 °
+8М		  8		3.54	2.57	5.35	0.8		и асимп; 14 °
+14М		  14	6.20	4.65	9.80	1.4		и асимп; 14 °
+
+
+Radius = 70
+PB = 5
+
+              Pi
+Teeth = -------------------- = 87.9
+        arcsin(  PB        )
+		        ----
+				2 x Radius=70
+
+            PB=5
+Radius = -------------- = 70.04
+         2 x sin( Pi  )
+		         -----
+				 Teeth=88
+
+
+///////////////////////////////////////////////////////////////////
+
+Conrad has belts:
+    ...
+    900
+    925
+    950
+   1000
+   1050
+    ...
+
+          Pi(D1 + D2)    (D1 - D2)^2
+L = 2C + ------------ + ------------
+               2             4C
+
+http://blog.misumiusa.com/sizing-timing-belts-and-pulleys/
+(timing belt length equation)
+
+
+         Pi(D1+D2)
+L1 = L - ---------
+             2
+
+L2 = (D1 - D2)^2
+
+     4xL1 + (16xL1^2 - 32xL2)^(1/2)
+C  = --------------------------------
+                  16
+
+C = ~287.17 (center to center between pulleys)
+
+D1 = 22.73
+
+Teeth  Outside Diameter(D2) Outside Radius     Printed Radius   Belt length
+   88             138.91            69.45               69.00        840.00
+  126             199.39            99.70               xx.xx       ~950.41
+  128             202.58           101.29               xx.xx       ~956.42
+  130             205.76           102.88              102.40       ~961.42
+
+http://www.pfeiferindustries.com/timing-belt-pulley-pitch-diameter-outside-diameter-charts-i-12-l-en.html
+http://www.pfeiferindustries.com/documents/5mm%20HTD%20Timing%20Belt%20Pulley%20PD%20and%20OD%20Chart.pdf
+
+Zahnriemen
+
+https://www.tooler.de
+https://www.voelkner.de
+https://www.hug-technik.com/shop/product_info.php?info=p5770_zahnriemen-htd-5m-laenge--980---9mm-breit----980-5m-9mm.html
