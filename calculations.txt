@@ -246,5 +246,33 @@ https://www.aliexpress.com/item/HTD-5M-pulley-timing-pulley-5M15T-Timing-Belt-Sy
 
 ///////////////
 
+EXPERIMENT CALCULATIONS:
 
-radi
+        weight  85kg
+        torque  0.85N (emperical)
+         ratio  1:9
+   wheel speed  1.38m/s (5km/h) (emperical)
+ circumference  1.22m
+wheel velociry  67 RPM
+motor velociry  603 RPM
+
+
+kv            170        270      370
+kt         0.056Nm/A  0.035Nm/A  0.026Nm/A
+required
+ current      15A        24A      32A
+
+
+Kritical voltage 7.67 will be reached with my weight on speed:
+
+  5km/h, 4S, kv 170
+  8km/h, 4S, kv 270
+ 11km/h, 4S, kv 370
+
+ 13km/h, 6S, kv 170
+ 21km/h, 6S, kv 270
+ 28km/h, 6S, kv 370
+
+ 21km/h, 8S, kv 170
+ 33km/h, 8S, kv 270
+ 45km/h, 8S, kv 370
